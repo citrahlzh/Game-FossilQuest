@@ -32,4 +32,4 @@ flutter:
         - asset: assets/fonts/LeagueSpartan-VariableFont.ttf
     - family: Montserrat
       fonts:
-        - asset: assets/fonts/Montserrat-VariableFont_wght.ttf
+        - asset: assets/fonts/Montserrat-VariableFont.ttf
