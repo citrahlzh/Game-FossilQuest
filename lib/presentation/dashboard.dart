@@ -19,35 +19,41 @@ class DashboardPage extends StatelessWidget {
               ),
               child: Center(
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     SizedBox(
-                      height: 400,
+                      height: 420,
                       child: Image(
                         image: AssetImage('../../assets/images/title.png'),
                         fit: BoxFit.fitHeight,
                       ),
                     ),
-                    SizedBox(
-                      height: 175,
-                      width: 370,
-                      child: DecoratedBox(
-                        decoration: BoxDecoration(
-                          color: Color(0xFFB15707),
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
-                          border: Border.all(
-                              color: Color(0xFFFFFFFF),
-                              width: 5,
-                              style: BorderStyle.solid),
-                        ),
-                        child: Center(
-                          child: Padding(
-                            padding: const EdgeInsets.all(50),
-                            child: Image(
-                              image: AssetImage(
-                                  '../../assets/images/play_button.png'),
-                              fit: BoxFit.scaleDown,
+                    SizedBox(height: 50),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, '/game');
+                      },
+                      child: SizedBox(
+                        height: 160,
+                        width: 370,
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(
+                            color: Color(0xFFB15707),
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            border: Border.all(
+                                color: Color(0xFFFFFFFF),
+                                width: 5,
+                                style: BorderStyle.solid),
+                          ),
+                          child: Center(
+                            child: Padding(
+                              padding: const EdgeInsets.all(50),
+                              child: Image(
+                                image: AssetImage(
+                                    '../../assets/images/play_button.png'),
+                                fit: BoxFit.scaleDown,
+                              ),
                             ),
                           ),
                         ),
