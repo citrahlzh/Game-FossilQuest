@@ -50,29 +50,74 @@ class GuidePage extends StatelessWidget {
                                           image: AssetImage(
                                               '../../assets/images/guide/guide1.png')),
                                     ),
+                                    SizedBox(height: 8),
                                     SizedBox(
                                       width: 200,
-                                      child: Row(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text('1.',
-                                              style: TextStyle(
-                                                  color: Color(0xFFFFE9D3),
-                                                  fontFamily: 'Montserrat Bold',
-                                                  fontSize: 13)),
-                                          SizedBox(width: 10),
-                                          Expanded(
-                                            child: Text(
-                                                'Cari ciri ciri keberadaan fossil dengan meng-klik pada tanah.',
-                                                textAlign: TextAlign.justify,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text('1.',
                                                 style: TextStyle(
                                                     color: Color(0xFFFFE9D3),
                                                     fontFamily:
                                                         'Montserrat Bold',
-                                                    fontSize: 13)),
-                                          )
-                                        ],
+                                                    fontSize: 20)),
+                                            SizedBox(width: 10),
+                                            Expanded(
+                                              child: Text(
+                                                  'Cari ciri ciri keberadaan fossil dengan meng-klik pada tanah.',
+                                                  style: TextStyle(
+                                                      color: Color(0xFFFFE9D3),
+                                                      fontFamily:
+                                                          'Montserrat Bold',
+                                                      fontSize: 20)),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    SizedBox(
+                                      width: 200,
+                                      child: Image(
+                                          image: AssetImage(
+                                              '../../assets/images/guide/guide2.png')),
+                                    ),
+                                    SizedBox(height: 8),
+                                    SizedBox(
+                                      width: 200,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text('2.',
+                                                style: TextStyle(
+                                                    color: Color(0xFFFFE9D3),
+                                                    fontFamily:
+                                                        'Montserrat Bold',
+                                                    fontSize: 20)),
+                                            SizedBox(width: 10),
+                                            Expanded(
+                                              child: Text(
+                                                  'Jika sudah di temukan jawab pertanyaan.',
+                                                  style: TextStyle(
+                                                      color: Color(0xFFFFE9D3),
+                                                      fontFamily:
+                                                          'Montserrat Bold',
+                                                      fontSize: 20)),
+                                            )
+                                          ],
+                                        ),
                                       ),
                                     )
                                   ],
