@@ -36,3 +36,9 @@ flutter:
     - family: Montserrat Bold
       fonts:
         - asset: assets/fonts/Montserrat-Bold.ttf
+    - family: League Spartan Bold
+      fonts:
+        - asset: assets/fonts/LeagueSpartan-Bold.ttf
+    - family: Inter Bold
+      fonts:
+        - asset: assets/fonts/Inter_18pt-Bold.ttf

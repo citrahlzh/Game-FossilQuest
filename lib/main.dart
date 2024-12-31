@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:game_fossilquest/presentation/dashboard.dart';
 import 'package:game_fossilquest/presentation/game.dart';
+import 'package:game_fossilquest/presentation/collection.dart';
 
 void main() {
   runApp(const MainApp());
@@ -17,6 +18,7 @@ class MainApp extends StatelessWidget {
       routes: {
         '/': (context) => DashboardPage(),
         '/game': (context) => GamePage(),
+        '/collection': (context) => CollectionPage(),
       },
     );
   }

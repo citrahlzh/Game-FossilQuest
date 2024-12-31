@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:game_fossilquest/application/random_image.dart';
 import 'package:game_fossilquest/application/guide.dart';
+import 'package:game_fossilquest/application/result.dart';
 
 class GamePage extends StatelessWidget {
   const GamePage({super.key});
@@ -35,7 +36,7 @@ class GamePage extends StatelessWidget {
                 ),
               ),
               Positioned(
-                width: 220,
+                width: 230,
                 height: 120,
                 top: 50,
                 left: -90,
@@ -89,13 +90,15 @@ class GamePage extends StatelessWidget {
                     )),
               ),
               Positioned(
-                width: 220,
+                width: 230,
                 height: 180,
                 top: 50,
                 right: -90,
                 child: ElevatedButton(
                     onPressed: () {
-                      Navigator.pop(context);
+                      showDialog(
+                          context: context, builder: (context) => ResultPage());
+                      // Navigator.pushNamed(context, '/collection');
                     },
                     style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
