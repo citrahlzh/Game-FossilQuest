@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:math';
 import 'package:game_fossilquest/application/fossil.dart';
 
 class CollectionPage extends StatelessWidget {

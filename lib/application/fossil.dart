@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:isar/isar.dart';
 
 class Fossil {
   final String name;
@@ -72,3 +73,4 @@ final List<Fossil> fossils = [
           'Velociraptor adalah genus dari dinosaurus Dromaeosaurid yang hidup di Asia pada kala Kapur Akhir, sekitar 75 hingga 71 juta tahun lalu. Dari genus tersebut, dua spesies sudah dideskripsikan. Spesies tipenya adala V. mongoliensis, yang dinamai dan dideskripsikan pada 1924.'),
 ];
 
+Type FossilIsar = Fossil;
