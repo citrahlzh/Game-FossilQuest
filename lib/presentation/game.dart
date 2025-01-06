@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:game_fossilquest/application/random_image.dart';
 import 'package:game_fossilquest/application/guide.dart';
 import 'package:game_fossilquest/application/result.dart';
@@ -96,9 +97,7 @@ class GamePage extends StatelessWidget {
                 right: -90,
                 child: ElevatedButton(
                     onPressed: () {
-                      showDialog(
-                          context: context, builder: (context) => ResultPage());
-                      // Navigator.pushNamed(context, '/collection');
+                      Navigator.pushNamed(context, '/collection');
                     },
                     style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(

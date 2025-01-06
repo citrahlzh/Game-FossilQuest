@@ -1,14 +1,15 @@
-// import 'package:bloc/bloc.dart';
-// import 'package:equatable/equatable.dart';
-// import 'package:isar/isar.dart';
-// import 'package:game_fossilquest/application/fossil.dart';
-// import 'package:game_fossilquest/application/question.dart';
-// import 'dart:math';
+import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'package:isar/isar.dart';
+import 'package:game_fossilquest/application/fossil.dart';
+import 'package:game_fossilquest/application/question.dart';
+import 'dart:math';
 
-// part 'game_event.dart';
-// part 'game_state.dart';
+part 'game_event.dart';
+part 'game_state.dart';
 
-// class GameBloc extends Bloc<GameEvent, GameState> {
+class GameBloc extends Bloc<GameEvent, GameState> {
+  GameBloc(super.initialState);
 //   final List<Fossil> fossils;
 //   final List<Question> questions;
 //   late Isar isar;
@@ -63,4 +64,4 @@
 //     });
 //     emit(GameInitialState());
 //   }
-// }
+}

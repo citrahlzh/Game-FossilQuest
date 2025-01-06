@@ -1,6 +1,6 @@
-// part of 'game_bloc.dart';
+part of 'game_bloc.dart';
 
-// abstract class GameState extends Equatable{}
+abstract class GameState extends Equatable{}
 
 // class GameInitialState extends GameState {}
 // class GameQuestionState extends GameState {

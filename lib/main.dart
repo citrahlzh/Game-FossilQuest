@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:game_fossilquest/bloc_manage/game_bloc.dart';
+
 import 'package:game_fossilquest/presentation/dashboard.dart';
 import 'package:game_fossilquest/presentation/game.dart';
 import 'package:game_fossilquest/presentation/collection.dart';
@@ -14,10 +17,14 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/game',
+      initialRoute: '/',
       routes: {
         '/': (context) => DashboardPage(),
-        '/game': (context) => GamePage(),
+        '/game': (context) => //BlocProvider(
+            // create: (context) => GameBloc(),
+            // child:
+            GamePage(),
+        // ),
         '/collection': (context) => CollectionPage(),
       },
     );
