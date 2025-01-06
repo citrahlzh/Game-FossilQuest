@@ -24,7 +24,7 @@ class CollectionPage extends StatelessWidget {
                             right: 70,
                             child: Stack(children: [
                               Image(
-                                image: collectionImages[0].image,
+                                image: Image.asset(fossils.imagePath[])
                               ),
                             ])),
                         // Ikan
@@ -33,7 +33,7 @@ class CollectionPage extends StatelessWidget {
                             right: 0,
                             child: Stack(children: [
                               Image(
-                                image: collectionImages[1].image,
+                                image: Image.asset(fossils.imagePath[])
                               ),
                             ])),
                         // Kepala
@@ -42,7 +42,7 @@ class CollectionPage extends StatelessWidget {
                             right: 300,
                             child: Stack(children: [
                               Image(
-                                image: collectionImages[2].image,
+                                image: Image.asset(fossils.imagePath[])
                               ),
                             ])),
                         // Kerang
@@ -51,7 +51,7 @@ class CollectionPage extends StatelessWidget {
                             right: 100,
                             child: Stack(children: [
                               Image(
-                                image: collectionImages[3].image,
+                                image: Image.asset(fossils.imagePath[])
                               ),
                             ])),
                         // Mosasaurus
@@ -60,7 +60,7 @@ class CollectionPage extends StatelessWidget {
                             left: 0,
                             child: Stack(children: [
                               Image(
-                                image: collectionImages[4].image,
+                                image: Image.asset(fossils.imagePath[])
                               ),
                             ])),
                         // Ornithopoda
@@ -69,7 +69,7 @@ class CollectionPage extends StatelessWidget {
                             left: 360,
                             child: Stack(children: [
                               Image(
-                                image: collectionImages[5].image,
+                                image: Image.asset(fossils.imagePath[])
                               ),
                             ])),
                         // Pteranodon
@@ -78,7 +78,7 @@ class CollectionPage extends StatelessWidget {
                             left: 40,
                             child: Stack(children: [
                               Image(
-                                image: collectionImages[6].image,
+                                image: Image.asset(fossils.imagePath[])
                               ),
                             ])),
                         // Theropoda
@@ -87,7 +87,7 @@ class CollectionPage extends StatelessWidget {
                             left: 500,
                             child: Stack(children: [
                               Image(
-                                image: collectionImages[7].image,
+                                image: Image.asset(fossils.imagePath[])
                               ),
                             ])),
                         // Triceratops
@@ -96,7 +96,7 @@ class CollectionPage extends StatelessWidget {
                             right: 270,
                             child: Stack(children: [
                               Image(
-                                image: collectionImages[8].image,
+                                image: Image.asset(fossils.imagePath[])
                               ),
                             ])),
                         // Tulang
@@ -105,7 +105,7 @@ class CollectionPage extends StatelessWidget {
                             right: 40,
                             child: Stack(children: [
                               Image(
-                                image: collectionImages[9].image,
+                                image: Image.asset(fossils.imagePath[])
                               ),
                             ])),
                         // Tylosaurus
@@ -114,7 +114,7 @@ class CollectionPage extends StatelessWidget {
                             left: 10,
                             child: Stack(children: [
                               Image(
-                                image: collectionImages[10].image,
+                                image: Image.asset(fossils.imagePath[]),
                               ),
                             ])),
                         // Tyrannosaurus
@@ -123,7 +123,7 @@ class CollectionPage extends StatelessWidget {
                             left: 380,
                             child: Stack(children: [
                               Image(
-                                image: collectionImages[11].image,
+                                image: Image.asset(fossils.imagePath[]),
                               ),
                             ])),
                         // Velociraptor
@@ -132,7 +132,7 @@ class CollectionPage extends StatelessWidget {
                             right: 340,
                             child: Stack(children: [
                               Image(
-                                image: collectionImages[12].image,
+                                image: Image.asset(fossils.imagePath[12]),
                               ),
                             ])),
                       ])),
