@@ -1,6 +1,12 @@
 part of 'game_bloc.dart';
 
-abstract class GameState extends Equatable{}
+abstract class GameState extends Equatable{
+  final String? question;
+  final List<String>? options;
+  final int? randomImageIndex;
+
+  const GameState({this.question, this.options, this.randomImageIndex});
+}
 
 // class GameInitialState extends GameState {}
 // class GameQuestionState extends GameState {

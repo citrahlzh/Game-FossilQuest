@@ -3,7 +3,7 @@ import 'package:isar/isar.dart';
 part 'fossils.g.dart';
 
 @Collection()
-class Fossil {
+class FossilData {
   Id id = Isar.autoIncrement;
 
   late String name;

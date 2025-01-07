@@ -2,7 +2,7 @@ part of 'game_bloc.dart';
 
 abstract class GameEvent {}
 
-// class StartGameEvent extends GameEvent {}
+class StartGameEvent extends GameEvent {}
 
 // class AnswerQuestionEvent extends GameEvent {
 //   final String answer;

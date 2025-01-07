@@ -10,11 +10,11 @@ part of 'fossils.dart';
 // ignore_for_file: duplicate_ignore, non_constant_identifier_names, constant_identifier_names, invalid_use_of_protected_member, unnecessary_cast, prefer_const_constructors, lines_longer_than_80_chars, require_trailing_commas, inference_failure_on_function_invocation, unnecessary_parenthesis, unnecessary_raw_strings, unnecessary_null_checks, join_return_with_assignment, prefer_final_locals, avoid_js_rounded_ints, avoid_positional_boolean_parameters, always_specify_types
 
 extension GetFossilCollection on Isar {
-  IsarCollection<Fossil> get fossils => this.collection();
+  IsarCollection<FossilData> get fossils => this.collection();
 }
 
 const FossilSchema = CollectionSchema(
-  name: r'Fossil',
+  name: r'FossilData',
   id: -3522023956126621962,
   properties: {
     r'description': PropertySchema(
@@ -48,7 +48,7 @@ const FossilSchema = CollectionSchema(
 );
 
 int _fossilEstimateSize(
-  Fossil object,
+  FossilData object,
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
@@ -60,7 +60,7 @@ int _fossilEstimateSize(
 }
 
 void _fossilSerialize(
-  Fossil object,
+  FossilData object,
   IsarWriter writer,
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
@@ -70,13 +70,13 @@ void _fossilSerialize(
   writer.writeString(offsets[2], object.name);
 }
 
-Fossil _fossilDeserialize(
+FossilData _fossilDeserialize(
   Id id,
   IsarReader reader,
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
-  final object = Fossil();
+  final object = FossilData();
   object.description = reader.readString(offsets[0]);
   object.id = id;
   object.imagePath = reader.readString(offsets[1]);
@@ -102,28 +102,28 @@ P _fossilDeserializeProp<P>(
   }
 }
 
-Id _fossilGetId(Fossil object) {
+Id _fossilGetId(FossilData object) {
   return object.id;
 }
 
-List<IsarLinkBase<dynamic>> _fossilGetLinks(Fossil object) {
+List<IsarLinkBase<dynamic>> _fossilGetLinks(FossilData object) {
   return [];
 }
 
-void _fossilAttach(IsarCollection<dynamic> col, Id id, Fossil object) {
+void _fossilAttach(IsarCollection<dynamic> col, Id id, FossilData object) {
   object.id = id;
 }
 
-extension FossilQueryWhereSort on QueryBuilder<Fossil, Fossil, QWhere> {
-  QueryBuilder<Fossil, Fossil, QAfterWhere> anyId() {
+extension FossilQueryWhereSort on QueryBuilder<FossilData, FossilData, QWhere> {
+  QueryBuilder<FossilData, FossilData, QAfterWhere> anyId() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(const IdWhereClause.any());
     });
   }
 }
 
-extension FossilQueryWhere on QueryBuilder<Fossil, Fossil, QWhereClause> {
-  QueryBuilder<Fossil, Fossil, QAfterWhereClause> idEqualTo(Id id) {
+extension FossilQueryWhere on QueryBuilder<FossilData, FossilData, QWhereClause> {
+  QueryBuilder<FossilData, FossilData, QAfterWhereClause> idEqualTo(Id id) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IdWhereClause.between(
         lower: id,
@@ -132,7 +132,7 @@ extension FossilQueryWhere on QueryBuilder<Fossil, Fossil, QWhereClause> {
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterWhereClause> idNotEqualTo(Id id) {
+  QueryBuilder<FossilData, FossilData, QAfterWhereClause> idNotEqualTo(Id id) {
     return QueryBuilder.apply(this, (query) {
       if (query.whereSort == Sort.asc) {
         return query
@@ -154,7 +154,7 @@ extension FossilQueryWhere on QueryBuilder<Fossil, Fossil, QWhereClause> {
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterWhereClause> idGreaterThan(Id id,
+  QueryBuilder<FossilData, FossilData, QAfterWhereClause> idGreaterThan(Id id,
       {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
@@ -163,7 +163,7 @@ extension FossilQueryWhere on QueryBuilder<Fossil, Fossil, QWhereClause> {
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterWhereClause> idLessThan(Id id,
+  QueryBuilder<FossilData, FossilData, QAfterWhereClause> idLessThan(Id id,
       {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
@@ -172,7 +172,7 @@ extension FossilQueryWhere on QueryBuilder<Fossil, Fossil, QWhereClause> {
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterWhereClause> idBetween(
+  QueryBuilder<FossilData, FossilData, QAfterWhereClause> idBetween(
     Id lowerId,
     Id upperId, {
     bool includeLower = true,
@@ -189,8 +189,8 @@ extension FossilQueryWhere on QueryBuilder<Fossil, Fossil, QWhereClause> {
   }
 }
 
-extension FossilQueryFilter on QueryBuilder<Fossil, Fossil, QFilterCondition> {
-  QueryBuilder<Fossil, Fossil, QAfterFilterCondition> descriptionEqualTo(
+extension FossilQueryFilter on QueryBuilder<FossilData, FossilData, QFilterCondition> {
+  QueryBuilder<FossilData, FossilData, QAfterFilterCondition> descriptionEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -203,7 +203,7 @@ extension FossilQueryFilter on QueryBuilder<Fossil, Fossil, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterFilterCondition> descriptionGreaterThan(
+  QueryBuilder<FossilData, FossilData, QAfterFilterCondition> descriptionGreaterThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -218,7 +218,7 @@ extension FossilQueryFilter on QueryBuilder<Fossil, Fossil, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterFilterCondition> descriptionLessThan(
+  QueryBuilder<FossilData, FossilData, QAfterFilterCondition> descriptionLessThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -233,7 +233,7 @@ extension FossilQueryFilter on QueryBuilder<Fossil, Fossil, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterFilterCondition> descriptionBetween(
+  QueryBuilder<FossilData, FossilData, QAfterFilterCondition> descriptionBetween(
     String lower,
     String upper, {
     bool includeLower = true,
@@ -252,7 +252,7 @@ extension FossilQueryFilter on QueryBuilder<Fossil, Fossil, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterFilterCondition> descriptionStartsWith(
+  QueryBuilder<FossilData, FossilData, QAfterFilterCondition> descriptionStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -265,7 +265,7 @@ extension FossilQueryFilter on QueryBuilder<Fossil, Fossil, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterFilterCondition> descriptionEndsWith(
+  QueryBuilder<FossilData, FossilData, QAfterFilterCondition> descriptionEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -278,7 +278,7 @@ extension FossilQueryFilter on QueryBuilder<Fossil, Fossil, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterFilterCondition> descriptionContains(
+  QueryBuilder<FossilData, FossilData, QAfterFilterCondition> descriptionContains(
       String value,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -290,7 +290,7 @@ extension FossilQueryFilter on QueryBuilder<Fossil, Fossil, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterFilterCondition> descriptionMatches(
+  QueryBuilder<FossilData, FossilData, QAfterFilterCondition> descriptionMatches(
       String pattern,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -302,7 +302,7 @@ extension FossilQueryFilter on QueryBuilder<Fossil, Fossil, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterFilterCondition> descriptionIsEmpty() {
+  QueryBuilder<FossilData, FossilData, QAfterFilterCondition> descriptionIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'description',
@@ -311,7 +311,7 @@ extension FossilQueryFilter on QueryBuilder<Fossil, Fossil, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterFilterCondition> descriptionIsNotEmpty() {
+  QueryBuilder<FossilData, FossilData, QAfterFilterCondition> descriptionIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'description',
@@ -320,7 +320,7 @@ extension FossilQueryFilter on QueryBuilder<Fossil, Fossil, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterFilterCondition> idEqualTo(Id value) {
+  QueryBuilder<FossilData, FossilData, QAfterFilterCondition> idEqualTo(Id value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'id',
@@ -329,7 +329,7 @@ extension FossilQueryFilter on QueryBuilder<Fossil, Fossil, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterFilterCondition> idGreaterThan(
+  QueryBuilder<FossilData, FossilData, QAfterFilterCondition> idGreaterThan(
     Id value, {
     bool include = false,
   }) {
@@ -342,7 +342,7 @@ extension FossilQueryFilter on QueryBuilder<Fossil, Fossil, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterFilterCondition> idLessThan(
+  QueryBuilder<FossilData, FossilData, QAfterFilterCondition> idLessThan(
     Id value, {
     bool include = false,
   }) {
@@ -355,7 +355,7 @@ extension FossilQueryFilter on QueryBuilder<Fossil, Fossil, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterFilterCondition> idBetween(
+  QueryBuilder<FossilData, FossilData, QAfterFilterCondition> idBetween(
     Id lower,
     Id upper, {
     bool includeLower = true,
@@ -372,7 +372,7 @@ extension FossilQueryFilter on QueryBuilder<Fossil, Fossil, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterFilterCondition> imagePathEqualTo(
+  QueryBuilder<FossilData, FossilData, QAfterFilterCondition> imagePathEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -385,7 +385,7 @@ extension FossilQueryFilter on QueryBuilder<Fossil, Fossil, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterFilterCondition> imagePathGreaterThan(
+  QueryBuilder<FossilData, FossilData, QAfterFilterCondition> imagePathGreaterThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -400,7 +400,7 @@ extension FossilQueryFilter on QueryBuilder<Fossil, Fossil, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterFilterCondition> imagePathLessThan(
+  QueryBuilder<FossilData, FossilData, QAfterFilterCondition> imagePathLessThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -415,7 +415,7 @@ extension FossilQueryFilter on QueryBuilder<Fossil, Fossil, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterFilterCondition> imagePathBetween(
+  QueryBuilder<FossilData, FossilData, QAfterFilterCondition> imagePathBetween(
     String lower,
     String upper, {
     bool includeLower = true,
@@ -434,7 +434,7 @@ extension FossilQueryFilter on QueryBuilder<Fossil, Fossil, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterFilterCondition> imagePathStartsWith(
+  QueryBuilder<FossilData, FossilData, QAfterFilterCondition> imagePathStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -447,7 +447,7 @@ extension FossilQueryFilter on QueryBuilder<Fossil, Fossil, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterFilterCondition> imagePathEndsWith(
+  QueryBuilder<FossilData, FossilData, QAfterFilterCondition> imagePathEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -460,7 +460,7 @@ extension FossilQueryFilter on QueryBuilder<Fossil, Fossil, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterFilterCondition> imagePathContains(
+  QueryBuilder<FossilData, FossilData, QAfterFilterCondition> imagePathContains(
       String value,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -472,7 +472,7 @@ extension FossilQueryFilter on QueryBuilder<Fossil, Fossil, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterFilterCondition> imagePathMatches(
+  QueryBuilder<FossilData, FossilData, QAfterFilterCondition> imagePathMatches(
       String pattern,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -484,7 +484,7 @@ extension FossilQueryFilter on QueryBuilder<Fossil, Fossil, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterFilterCondition> imagePathIsEmpty() {
+  QueryBuilder<FossilData, FossilData, QAfterFilterCondition> imagePathIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'imagePath',
@@ -493,7 +493,7 @@ extension FossilQueryFilter on QueryBuilder<Fossil, Fossil, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterFilterCondition> imagePathIsNotEmpty() {
+  QueryBuilder<FossilData, FossilData, QAfterFilterCondition> imagePathIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'imagePath',
@@ -502,7 +502,7 @@ extension FossilQueryFilter on QueryBuilder<Fossil, Fossil, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterFilterCondition> nameEqualTo(
+  QueryBuilder<FossilData, FossilData, QAfterFilterCondition> nameEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -515,7 +515,7 @@ extension FossilQueryFilter on QueryBuilder<Fossil, Fossil, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterFilterCondition> nameGreaterThan(
+  QueryBuilder<FossilData, FossilData, QAfterFilterCondition> nameGreaterThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -530,7 +530,7 @@ extension FossilQueryFilter on QueryBuilder<Fossil, Fossil, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterFilterCondition> nameLessThan(
+  QueryBuilder<FossilData, FossilData, QAfterFilterCondition> nameLessThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -545,7 +545,7 @@ extension FossilQueryFilter on QueryBuilder<Fossil, Fossil, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterFilterCondition> nameBetween(
+  QueryBuilder<FossilData, FossilData, QAfterFilterCondition> nameBetween(
     String lower,
     String upper, {
     bool includeLower = true,
@@ -564,7 +564,7 @@ extension FossilQueryFilter on QueryBuilder<Fossil, Fossil, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterFilterCondition> nameStartsWith(
+  QueryBuilder<FossilData, FossilData, QAfterFilterCondition> nameStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -577,7 +577,7 @@ extension FossilQueryFilter on QueryBuilder<Fossil, Fossil, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterFilterCondition> nameEndsWith(
+  QueryBuilder<FossilData, FossilData, QAfterFilterCondition> nameEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -590,7 +590,7 @@ extension FossilQueryFilter on QueryBuilder<Fossil, Fossil, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterFilterCondition> nameContains(String value,
+  QueryBuilder<FossilData, FossilData, QAfterFilterCondition> nameContains(String value,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
@@ -601,7 +601,7 @@ extension FossilQueryFilter on QueryBuilder<Fossil, Fossil, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterFilterCondition> nameMatches(
+  QueryBuilder<FossilData, FossilData, QAfterFilterCondition> nameMatches(
       String pattern,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -613,7 +613,7 @@ extension FossilQueryFilter on QueryBuilder<Fossil, Fossil, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterFilterCondition> nameIsEmpty() {
+  QueryBuilder<FossilData, FossilData, QAfterFilterCondition> nameIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'name',
@@ -622,7 +622,7 @@ extension FossilQueryFilter on QueryBuilder<Fossil, Fossil, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterFilterCondition> nameIsNotEmpty() {
+  QueryBuilder<FossilData, FossilData, QAfterFilterCondition> nameIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'name',
@@ -632,114 +632,114 @@ extension FossilQueryFilter on QueryBuilder<Fossil, Fossil, QFilterCondition> {
   }
 }
 
-extension FossilQueryObject on QueryBuilder<Fossil, Fossil, QFilterCondition> {}
+extension FossilQueryObject on QueryBuilder<FossilData, FossilData, QFilterCondition> {}
 
-extension FossilQueryLinks on QueryBuilder<Fossil, Fossil, QFilterCondition> {}
+extension FossilQueryLinks on QueryBuilder<FossilData, FossilData, QFilterCondition> {}
 
-extension FossilQuerySortBy on QueryBuilder<Fossil, Fossil, QSortBy> {
-  QueryBuilder<Fossil, Fossil, QAfterSortBy> sortByDescription() {
+extension FossilQuerySortBy on QueryBuilder<FossilData, FossilData, QSortBy> {
+  QueryBuilder<FossilData, FossilData, QAfterSortBy> sortByDescription() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'description', Sort.asc);
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterSortBy> sortByDescriptionDesc() {
+  QueryBuilder<FossilData, FossilData, QAfterSortBy> sortByDescriptionDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'description', Sort.desc);
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterSortBy> sortByImagePath() {
+  QueryBuilder<FossilData, FossilData, QAfterSortBy> sortByImagePath() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'imagePath', Sort.asc);
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterSortBy> sortByImagePathDesc() {
+  QueryBuilder<FossilData, FossilData, QAfterSortBy> sortByImagePathDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'imagePath', Sort.desc);
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterSortBy> sortByName() {
+  QueryBuilder<FossilData, FossilData, QAfterSortBy> sortByName() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'name', Sort.asc);
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterSortBy> sortByNameDesc() {
+  QueryBuilder<FossilData, FossilData, QAfterSortBy> sortByNameDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'name', Sort.desc);
     });
   }
 }
 
-extension FossilQuerySortThenBy on QueryBuilder<Fossil, Fossil, QSortThenBy> {
-  QueryBuilder<Fossil, Fossil, QAfterSortBy> thenByDescription() {
+extension FossilQuerySortThenBy on QueryBuilder<FossilData, FossilData, QSortThenBy> {
+  QueryBuilder<FossilData, FossilData, QAfterSortBy> thenByDescription() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'description', Sort.asc);
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterSortBy> thenByDescriptionDesc() {
+  QueryBuilder<FossilData, FossilData, QAfterSortBy> thenByDescriptionDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'description', Sort.desc);
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterSortBy> thenById() {
+  QueryBuilder<FossilData, FossilData, QAfterSortBy> thenById() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'id', Sort.asc);
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterSortBy> thenByIdDesc() {
+  QueryBuilder<FossilData, FossilData, QAfterSortBy> thenByIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'id', Sort.desc);
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterSortBy> thenByImagePath() {
+  QueryBuilder<FossilData, FossilData, QAfterSortBy> thenByImagePath() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'imagePath', Sort.asc);
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterSortBy> thenByImagePathDesc() {
+  QueryBuilder<FossilData, FossilData, QAfterSortBy> thenByImagePathDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'imagePath', Sort.desc);
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterSortBy> thenByName() {
+  QueryBuilder<FossilData, FossilData, QAfterSortBy> thenByName() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'name', Sort.asc);
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QAfterSortBy> thenByNameDesc() {
+  QueryBuilder<FossilData, FossilData, QAfterSortBy> thenByNameDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'name', Sort.desc);
     });
   }
 }
 
-extension FossilQueryWhereDistinct on QueryBuilder<Fossil, Fossil, QDistinct> {
-  QueryBuilder<Fossil, Fossil, QDistinct> distinctByDescription(
+extension FossilQueryWhereDistinct on QueryBuilder<FossilData, FossilData, QDistinct> {
+  QueryBuilder<FossilData, FossilData, QDistinct> distinctByDescription(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'description', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QDistinct> distinctByImagePath(
+  QueryBuilder<FossilData, FossilData, QDistinct> distinctByImagePath(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'imagePath', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<Fossil, Fossil, QDistinct> distinctByName(
+  QueryBuilder<FossilData, FossilData, QDistinct> distinctByName(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'name', caseSensitive: caseSensitive);
@@ -747,26 +747,26 @@ extension FossilQueryWhereDistinct on QueryBuilder<Fossil, Fossil, QDistinct> {
   }
 }
 
-extension FossilQueryProperty on QueryBuilder<Fossil, Fossil, QQueryProperty> {
-  QueryBuilder<Fossil, int, QQueryOperations> idProperty() {
+extension FossilQueryProperty on QueryBuilder<FossilData, FossilData, QQueryProperty> {
+  QueryBuilder<FossilData, int, QQueryOperations> idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'id');
     });
   }
 
-  QueryBuilder<Fossil, String, QQueryOperations> descriptionProperty() {
+  QueryBuilder<FossilData, String, QQueryOperations> descriptionProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'description');
     });
   }
 
-  QueryBuilder<Fossil, String, QQueryOperations> imagePathProperty() {
+  QueryBuilder<FossilData, String, QQueryOperations> imagePathProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'imagePath');
     });
   }
 
-  QueryBuilder<Fossil, String, QQueryOperations> nameProperty() {
+  QueryBuilder<FossilData, String, QQueryOperations> nameProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'name');
     });

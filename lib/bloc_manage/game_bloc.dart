@@ -1,15 +1,39 @@
+import 'dart:math';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:isar/isar.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:game_fossilquest/collection/fossils.dart';
 import 'package:game_fossilquest/application/fossil.dart';
 import 'package:game_fossilquest/application/question.dart';
-import 'dart:math';
 
 part 'game_event.dart';
 part 'game_state.dart';
 
 class GameBloc extends Bloc<GameEvent, GameState> {
-  GameBloc(super.initialState);
+  List<Fossil> fossils;
+  List<Question> questions;
+  late Isar isar;
+
+  GameBloc() {
+    on<StartGameEvent>(_onStartGame);
+    // on<AnswerQuestionEvent>(_onAnswerQuestion);
+    // on<CollectFossilEvent>(_onCollectFossil);
+    // _initDatabase();
+  }
+
+  Future<void> _initDatabase() async {
+    final dir = await getApplicationDocumentsDirectory();
+    isar = await Isar.open([FossilSchema], directory: dir.path);
+  }
+}
+
+void _onStartGame(StartGameEvent event, Emitter<GameState> emit) {
+  final random = Random();
+
+}
+
+// class GameBloc extends Bloc<GameEvent, GameState> {
 //   final List<Fossil> fossils;
 //   final List<Question> questions;
 //   late Isar isar;
@@ -64,4 +88,4 @@ class GameBloc extends Bloc<GameEvent, GameState> {
 //     });
 //     emit(GameInitialState());
 //   }
-}
+// }
