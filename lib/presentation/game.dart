@@ -25,7 +25,7 @@ class GamePage extends StatelessWidget {
                     SizedBox.expand(
                         child: DecoratedBox(
                       decoration: BoxDecoration(
-                        color: Color(0xFF633925),
+                        color: Color(0x99633925),
                       ),
                     )),
                     ...List.generate(3, (index) {

@@ -9,8 +9,12 @@ class RandomImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final random = Random();
-    final double top = random.nextDouble() * (MediaQuery.of(context).size.height - 100);
-    final double left = random.nextDouble() * (MediaQuery.of(context).size.width - 100);
+    final double top = random
+        .nextInt(MediaQuery.of(context).size.height.toInt() - 200)
+        .toDouble();
+    final double left = random
+        .nextInt(MediaQuery.of(context).size.width.toInt() - 250)
+        .toDouble();
 
     return Positioned(
       top: top,

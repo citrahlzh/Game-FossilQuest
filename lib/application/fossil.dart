@@ -41,12 +41,12 @@ final List<Fossil> fossils = [
           'Pteranodon adalah genus pterosaurus yang termasuk beberapa reptil terbang terbesar yang pernah diketahui, dengan rentang sayap melebihi 7 meter. '),
   Fossil(
       name: 'Theropoda',
-      imagePath: '../../assets/images/fossil/threropoda.png',
+      imagePath: '../../assets/images/fossil/theropoda.png',
       description:
           'Theropoda adalah klad dinosaurus yang memiliki tulang berongga dan tiga jari kaki. Theropoda biasanya diklasifikasikan sebagai kelompok dinosaurus Saurischia. Theropoda secara garis keturunan adalah karnivora,'),
   Fossil(
       name: 'Triceratops',
-      imagePath: '../../assets/images/fossil/receratops.png',
+      imagePath: '../../assets/images/fossil/triceratops.png',
       description:
           'Triceratops adalah genus dari dinosaurus ceratopsia chasmosaurinae yang hidup pada sub-kala Maastrichtium akhir pada kala Kapur Akhir, sekitar 68 hingga 66 juta tahun lalu pada wilayah yang sekarang merupakan Amerika Utara.'),
   Fossil(
