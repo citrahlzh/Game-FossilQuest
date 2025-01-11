@@ -69,19 +69,3 @@ final List<Fossil> fossils = [
       description:
           'Velociraptor adalah genus dari dinosaurus Dromaeosaurid yang hidup di Asia pada kala Kapur Akhir, sekitar 75 hingga 71 juta tahun lalu. Dari genus tersebut, dua spesies sudah dideskripsikan. Spesies tipenya adala V. mongoliensis, yang dinamai dan dideskripsikan pada 1924.'),
 ];
-
-// final List<Image> collectionImages = [
-//   Image.asset('../../assets/images/fossil/daun.png'),
-//   Image.asset('../../assets/images/fossil/ikan.png'),
-//   Image.asset('../../assets/images/fossil/kepala.png'),
-//   Image.asset('../../assets/images/fossil/kerang.png'),
-//   Image.asset('../../assets/images/fossil/mosasaurus.png'),
-//   Image.asset('../../assets/images/fossil/ornithopoda.png'),
-//   Image.asset('../../assets/images/fossil/pteranodon.png'),
-//   Image.asset('../../assets/images/fossil/theropoda.png'),
-//   Image.asset('../../assets/images/fossil/triceratops.png'),
-//   Image.asset('../../assets/images/fossil/tulang.png'),
-//   Image.asset('../../assets/images/fossil/tylosaurus.png'),
-//   Image.asset('../../assets/images/fossil/tyrannosaurus.png'),
-//   Image.asset('../../assets/images/fossil/velociraptor.png'),
-// ];

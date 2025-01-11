@@ -4,14 +4,8 @@ abstract class GameEvent {}
 
 class StartGameEvent extends GameEvent {}
 
-// class AnswerQuestionEvent extends GameEvent {
-//   final String answer;
-
-//   AnswerQuestionEvent(this.answer);
-// }
-
-// class CollectFossilEvent extends GameEvent {
-//   final Fossil fossil;
-
-//   CollectFossilEvent(this.fossil);
-// }
+class TapImageEvent extends GameEvent {
+  final int index;
+  
+  TapImageEvent({required this.index});
+}

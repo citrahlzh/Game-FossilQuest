@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:game_fossilquest/application/fossil.dart';
+import 'package:game_fossilquest/application/fossil_blank.dart';
 
 class CollectionPage extends StatelessWidget {
   const CollectionPage({super.key});
@@ -23,70 +24,70 @@ class CollectionPage extends StatelessWidget {
                             bottom: 70,
                             right: 70,
                             child: Stack(children: [
-                              Image(image: AssetImage(fossils[0].imagePath)),
+                              Image(image: AssetImage(blankFossil[0])),
                             ])),
                         // Ikan
                         Positioned(
                             top: 200,
                             right: 0,
                             child: Stack(children: [
-                              Image(image: AssetImage(fossils[1].imagePath)),
+                              Image(image: AssetImage(blankFossil[1])),
                             ])),
                         // Kepala
                         Positioned(
                             top: 0,
                             right: 300,
                             child: Stack(children: [
-                              Image(image: AssetImage(fossils[2].imagePath)),
+                              Image(image: AssetImage(blankFossil[2])),
                             ])),
                         // Kerang
                         Positioned(
                             bottom: 250,
                             right: 100,
                             child: Stack(children: [
-                              Image(image: AssetImage(fossils[3].imagePath)),
+                              Image(image: AssetImage(blankFossil[3])),
                             ])),
                         // Mosasaurus
                         Positioned(
                             top: 10,
                             left: 0,
                             child: Stack(children: [
-                              Image(image: AssetImage(fossils[4].imagePath)),
+                              Image(image: AssetImage(blankFossil[4])),
                             ])),
                         // Ornithopoda
                         Positioned(
                             bottom: 0,
                             left: 360,
                             child: Stack(children: [
-                              Image(image: AssetImage(fossils[5].imagePath)),
+                              Image(image: AssetImage(blankFossil[5])),
                             ])),
                         // Pteranodon
                         Positioned(
                             bottom: 0,
                             left: 40,
                             child: Stack(children: [
-                              Image(image: AssetImage(fossils[6].imagePath)),
+                              Image(image: AssetImage(blankFossil[6])),
                             ])),
                         // Theropoda
                         Positioned(
                             top: 0,
                             left: 500,
                             child: Stack(children: [
-                              Image(image: AssetImage(fossils[7].imagePath)),
+                              Image(image: AssetImage(blankFossil[7])),
                             ])),
                         // Triceratops
                         Positioned(
                             top: 220,
                             right: 270,
                             child: Stack(children: [
-                              Image(image: AssetImage(fossils[8].imagePath)),
+                              Image(image: AssetImage(blankFossil[8])),
                             ])),
                         // Tulang
                         Positioned(
                             top: 0,
                             right: 40,
                             child: Stack(children: [
-                              Image(image: AssetImage(fossils[9].imagePath)),
+                              Image(image: AssetImage(blankFossil[9])),
                             ])),
                         // Tylosaurus
                         Positioned(
@@ -94,7 +95,7 @@ class CollectionPage extends StatelessWidget {
                             left: 10,
                             child: Stack(children: [
                               Image(
-                                image: AssetImage(fossils[10].imagePath),
+                                image: AssetImage(blankFossil[10]),
                               ),
                             ])),
                         // Tyrannosaurus
@@ -103,7 +104,7 @@ class CollectionPage extends StatelessWidget {
                             left: 380,
                             child: Stack(children: [
                               Image(
-                                image: AssetImage(fossils[11].imagePath),
+                                image: AssetImage(blankFossil[11]),
                               ),
                             ])),
                         // Velociraptor
@@ -112,7 +113,7 @@ class CollectionPage extends StatelessWidget {
                             right: 340,
                             child: Stack(children: [
                               Image(
-                                image: AssetImage(fossils[12].imagePath),
+                                image: AssetImage(blankFossil[12]),
                               ),
                             ])),
                       ])),

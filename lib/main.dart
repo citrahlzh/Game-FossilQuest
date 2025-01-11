@@ -20,11 +20,10 @@ class MainApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => DashboardPage(),
-        '/game': (context) => //BlocProvider(
-            // create: (context) => GameBloc(),
-            // child:
-            GamePage(),
-        // ),
+        '/game': (context) => BlocProvider(
+              create: (context) => GameBloc()..add(StartGameEvent()),
+              child: GamePage(),
+            ),
         '/collection': (context) => CollectionPage(),
       },
     );
