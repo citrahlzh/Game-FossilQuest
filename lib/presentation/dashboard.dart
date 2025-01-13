@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:game_fossilquest/bloc_manage/game_bloc.dart';
+import 'package:game_fossilquest/presentation/game.dart';
 
 class DashboardPage extends StatelessWidget {
   const DashboardPage({super.key});
@@ -32,7 +35,13 @@ class DashboardPage extends StatelessWidget {
                     SizedBox(height: 50),
                     GestureDetector(
                       onTap: () {
-                        Navigator.pushNamed(context, '/game');
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (__) => BlocProvider(
+                                    create: (context) =>
+                                        GameBloc()..add(StartGameEvent()),
+                                    child: GamePage())));
                       },
                       child: SizedBox(
                         height: 160,
