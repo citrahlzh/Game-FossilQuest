@@ -12,7 +12,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   GameBloc() : super(InitialState()) {
     on<StartGameEvent>(_onStartGame);
     on<OnTapImageEvent>(_onTapImage);
-    on<OnSecondTapImageEvent>(_onSecondTapImage);
+    // on<OnSecondTapImageEvent>(_onSecondTapImage);
   }
 
   void _onStartGame(StartGameEvent event, Emitter<GameState> emit) {
