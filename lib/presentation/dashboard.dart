@@ -35,12 +35,17 @@ class DashboardPage extends StatelessWidget {
                     SizedBox(height: 50),
                     GestureDetector(
                       onTap: () {
+                        final screenWidth = MediaQuery.of(context).size.width;
+                        final screenHeight = MediaQuery.of(context).size.height;
+
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (__) => BlocProvider(
-                                    create: (context) =>
-                                        GameBloc()..add(StartGameEvent()),
+                                    create: (context) => GameBloc()
+                                      ..add(StartGameEvent(
+                                          screenWidth: screenWidth,
+                                          screenHeight: screenHeight)),
                                     child: GamePage())));
                       },
                       child: SizedBox(

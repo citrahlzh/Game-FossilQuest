@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 final List<String> blankFossil = [
   '../../assets/images/fossilblank/daun_blank.png',
   '../../assets/images/fossilblank/ikan_blank.png',

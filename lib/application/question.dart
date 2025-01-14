@@ -31,7 +31,9 @@ List<Question> questions = [
 ];
 
 class QuestionPage extends StatelessWidget {
-  const QuestionPage({super.key});
+  final Question question;
+
+  const QuestionPage({required this.question});
 
   @override
   Widget build(BuildContext context) {
