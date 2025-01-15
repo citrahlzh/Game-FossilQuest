@@ -46,6 +46,19 @@ class QuestionPage extends StatelessWidget {
       return gamebloc;
     }, child: BlocBuilder<GameBloc, GameState>(builder: (context, state) {
       if (state is QuestionDisplayed) {
+        Color _getButtonColor(
+          String? selectedOption,
+          String currentOption,
+          String? feedbackBorder,
+        ) {
+          if (selectedOption == currentOption) {
+            return feedbackBorder == 'correct'
+                ? Colors.green // Warna hijau untuk jawaban benar
+                : Colors.red; // Warna merah untuk jawaban salah
+          }
+          return const Color(0xFF582E1A); // Warna default
+        }
+
         return AlertDialog(
           backgroundColor: Colors.transparent,
           content: Center(
@@ -96,66 +109,178 @@ class QuestionPage extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
+                              // Tombol untuk opsi A
                               SizedBox(
                                 width: 100,
                                 height: 100,
                                 child: ElevatedButton(
-                                    onPressed: () {},
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor: Color(0xFF582E1A),
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(20),
-                                      ),
+                                  onPressed: () {
+                                    // Kirim event untuk memilih jawaban
+                                    context.read<GameBloc>().add(
+                                          SelectAnswerEvent(
+                                            state.question.options[
+                                                0], // Pilih opsi pertama
+                                          ),
+                                        );
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: _getButtonColor(
+                                      state.selectedOption,
+                                      state.question.options[0],
+                                      state.feedbackBorder,
                                     ),
-                                    child: Text(
-                                      'A',
-                                      style: TextStyle(
-                                          fontFamily: 'Inter Bold',
-                                          fontSize: 50,
-                                          color: Color(0xFFFFFFFF)),
-                                    )),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                  ),
+                                  child: const Text(
+                                    'A',
+                                    style: TextStyle(
+                                      fontFamily: 'Inter Bold',
+                                      fontSize: 50,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
                               ),
+                              // Tombol untuk opsi B
                               SizedBox(
                                 width: 100,
                                 height: 100,
                                 child: ElevatedButton(
-                                    onPressed: () {},
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor: Color(0xFF582E1A),
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(20),
-                                      ),
+                                  onPressed: () {
+                                    // Kirim event untuk memilih jawaban
+                                    context.read<GameBloc>().add(
+                                          SelectAnswerEvent(
+                                            state.question
+                                                .options[1], // Pilih opsi kedua
+                                          ),
+                                        );
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: _getButtonColor(
+                                      state.selectedOption,
+                                      state.question.options[1],
+                                      state.feedbackBorder,
                                     ),
-                                    child: Text(
-                                      'B',
-                                      style: TextStyle(
-                                          fontFamily: 'Inter Bold',
-                                          fontSize: 50,
-                                          color: Color(0xFFFFFFFF)),
-                                    )),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                  ),
+                                  child: const Text(
+                                    'B',
+                                    style: TextStyle(
+                                      fontFamily: 'Inter Bold',
+                                      fontSize: 50,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
                               ),
+                              // Tombol untuk opsi C
                               SizedBox(
                                 width: 100,
                                 height: 100,
                                 child: ElevatedButton(
-                                    onPressed: () {},
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor: Color(0xFF582E1A),
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(20),
-                                      ),
+                                  onPressed: () {
+                                    // Kirim event untuk memilih jawaban
+                                    context.read<GameBloc>().add(
+                                          SelectAnswerEvent(
+                                            state.question.options[
+                                                2], // Pilih opsi ketiga
+                                          ),
+                                        );
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: _getButtonColor(
+                                      state.selectedOption,
+                                      state.question.options[2],
+                                      state.feedbackBorder,
                                     ),
-                                    child: Text(
-                                      'C',
-                                      style: TextStyle(
-                                          fontFamily: 'Inter Bold',
-                                          fontSize: 50,
-                                          color: Color(0xFFFFFFFF)),
-                                    )),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                  ),
+                                  child: const Text(
+                                    'C',
+                                    style: TextStyle(
+                                      fontFamily: 'Inter Bold',
+                                      fontSize: 50,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
                               ),
                             ],
                           ),
                         )
+
+                        // SizedBox(
+                        //   width: 500,
+                        //   child: Row(
+                        //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        //     crossAxisAlignment: CrossAxisAlignment.center,
+                        //     children: [
+                        //       SizedBox(
+                        //         width: 100,
+                        //         height: 100,
+                        //         child: ElevatedButton(
+                        //             onPressed: () {},
+                        //             style: ElevatedButton.styleFrom(
+                        //               backgroundColor: Color(0xFF582E1A),
+                        //               shape: RoundedRectangleBorder(
+                        //                 borderRadius: BorderRadius.circular(20),
+                        //               ),
+                        //             ),
+                        //             child: Text(
+                        //               'A',
+                        //               style: TextStyle(
+                        //                   fontFamily: 'Inter Bold',
+                        //                   fontSize: 50,
+                        //                   color: Color(0xFFFFFFFF)),
+                        //             )),
+                        //       ),
+                        //       SizedBox(
+                        //         width: 100,
+                        //         height: 100,
+                        //         child: ElevatedButton(
+                        //             onPressed: () {},
+                        //             style: ElevatedButton.styleFrom(
+                        //               backgroundColor: Color(0xFF582E1A),
+                        //               shape: RoundedRectangleBorder(
+                        //                 borderRadius: BorderRadius.circular(20),
+                        //               ),
+                        //             ),
+                        //             child: Text(
+                        //               'B',
+                        //               style: TextStyle(
+                        //                   fontFamily: 'Inter Bold',
+                        //                   fontSize: 50,
+                        //                   color: Color(0xFFFFFFFF)),
+                        //             )),
+                        //       ),
+                        //       SizedBox(
+                        //         width: 100,
+                        //         height: 100,
+                        //         child: ElevatedButton(
+                        //             onPressed: () {},
+                        //             style: ElevatedButton.styleFrom(
+                        //               backgroundColor: Color(0xFF582E1A),
+                        //               shape: RoundedRectangleBorder(
+                        //                 borderRadius: BorderRadius.circular(20),
+                        //               ),
+                        //             ),
+                        //             child: Text(
+                        //               'C',
+                        //               style: TextStyle(
+                        //                   fontFamily: 'Inter Bold',
+                        //                   fontSize: 50,
+                        //                   color: Color(0xFFFFFFFF)),
+                        //             )),
+                        //       ),
+                        //     ],
+                        //   ),
+                        // )
                       ],
                     ),
                   ),
