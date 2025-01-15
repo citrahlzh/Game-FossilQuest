@@ -12,7 +12,8 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   GameBloc() : super(InitialState()) {
     on<StartGameEvent>(_onStartGame);
     on<OnTapImageEvent>(_onTapImage);
-    // on<OnSecondTapImageEvent>(_onSecondTapImage);
+    on<SelectAnswerEvent>(_onSelectAnswer);
+    on<ShowQuestionEvent>(_onShowQuestion);
   }
 
   void _onStartGame(StartGameEvent event, Emitter<GameState> emit) {
@@ -48,21 +49,28 @@ class GameBloc extends Bloc<GameEvent, GameState> {
     }
   }
 
-  // void _onSecondTapImage(OnSecondTapImageEvent event, Emitter<GameState> emit) {
-  //   if (state is ImagesGenerated) {
-  //     final currentState = state as ImagesGenerated;
+  void _onShowQuestion(ShowQuestionEvent event, Emitter<GameState> emit) {
+    emit(QuestionDisplayed(
+      question: event.question,
+      selectedOption: null,
+      feedbackBorder: null,
+    ));
+  }
 
-  //     print("Overlay tapped at index: ${event.index}");
+  void _onSelectAnswer(SelectAnswerEvent event, Emitter<GameState> emit) {
+    if (state is QuestionDisplayed) {
+      final currentState = state as QuestionDisplayed;
 
-  //     final randomQuestion = (questions..shuffle()).first;
+      final feedbackBorder =
+          event.selectedOption == currentState.question.correctAnswer
+              ? 'correct'
+              : 'wrong';
 
-  //     emit(QuestionDisplayed(
-  //       currentState.images,
-  //       event.index,
-  //       randomQuestion,
-  //     ));
-  //   } else {
-  //     print("State is not ImagesGenerated: ${state.runtimeType}");
-  //   }
-  // }
+      emit(QuestionDisplayed(
+        question: currentState.question,
+        selectedOption: event.selectedOption,
+        feedbackBorder: feedbackBorder,
+      ));
+    }
+  }
 }

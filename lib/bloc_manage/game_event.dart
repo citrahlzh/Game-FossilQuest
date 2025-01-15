@@ -17,8 +17,14 @@ class OnTapImageEvent extends GameEvent {
   OnTapImageEvent({required this.index});
 }
 
-class OnSecondTapImageEvent extends GameEvent {
-  final int index;
-  
-  OnSecondTapImageEvent({required this.index});
+class ShowQuestionEvent extends GameEvent {
+  final Question question;
+
+  ShowQuestionEvent(this.question);
+}
+
+class SelectAnswerEvent extends GameEvent {
+  final String selectedOption;
+
+  SelectAnswerEvent(this.selectedOption);
 }

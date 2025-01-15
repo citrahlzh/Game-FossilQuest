@@ -18,13 +18,10 @@ class GamePage extends StatelessWidget {
         body: BlocBuilder<GameBloc, GameState>(
           builder: (context, state) {
             if (state is QuestionDisplayed) {
-              final questionState = state as QuestionDisplayed;
               WidgetsBinding.instance.addPostFrameCallback((_) {
                 showDialog(
                   context: context,
-                  builder: (context) => QuestionPage(
-                    question: questionState.question,
-                  ),
+                  builder: (context) => QuestionPage(question: state.question),
                 );
               });
             }
@@ -65,8 +62,12 @@ class GamePage extends StatelessWidget {
                                   position:
                                       Offset(position.dx + 8, position.dy - 17),
                                   onTap: () {
-                                    context.read<GameBloc>().add(
-                                        OnSecondTapImageEvent(index: index));
+                                    final randomQuestion =
+                                        (questions..shuffle()).first;
+
+                                    context
+                                        .read<GameBloc>()
+                                        .add(ShowQuestionEvent(randomQuestion));
                                   },
                                 ),
                             ]);
