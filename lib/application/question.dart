@@ -46,17 +46,17 @@ class QuestionPage extends StatelessWidget {
       return gamebloc;
     }, child: BlocBuilder<GameBloc, GameState>(builder: (context, state) {
       if (state is QuestionDisplayed) {
-        Color _getButtonColor(
+        BorderSide _getBorderStyle(
           String? selectedOption,
           String currentOption,
           String? feedbackBorder,
         ) {
           if (selectedOption == currentOption) {
             return feedbackBorder == 'correct'
-                ? Colors.green // Warna hijau untuk jawaban benar
-                : Colors.red; // Warna merah untuk jawaban salah
+                ? const BorderSide(color: Colors.white, width: 8)
+                : const BorderSide(color: Colors.red, width: 8);
           }
-          return const Color(0xFF582E1A); // Warna default
+          return BorderSide.none;
         }
 
         return AlertDialog(
@@ -109,22 +109,20 @@ class QuestionPage extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              // Tombol untuk opsi A
                               SizedBox(
                                 width: 100,
                                 height: 100,
                                 child: ElevatedButton(
                                   onPressed: () {
-                                    // Kirim event untuk memilih jawaban
                                     context.read<GameBloc>().add(
                                           SelectAnswerEvent(
-                                            state.question.options[
-                                                0], // Pilih opsi pertama
+                                            state.question.options[0],
                                           ),
                                         );
                                   },
                                   style: ElevatedButton.styleFrom(
-                                    backgroundColor: _getButtonColor(
+                                    backgroundColor: const Color(0xFF582E1A),
+                                    side: _getBorderStyle(
                                       state.selectedOption,
                                       state.question.options[0],
                                       state.feedbackBorder,
@@ -143,22 +141,20 @@ class QuestionPage extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              // Tombol untuk opsi B
                               SizedBox(
                                 width: 100,
                                 height: 100,
                                 child: ElevatedButton(
                                   onPressed: () {
-                                    // Kirim event untuk memilih jawaban
                                     context.read<GameBloc>().add(
                                           SelectAnswerEvent(
-                                            state.question
-                                                .options[1], // Pilih opsi kedua
+                                            state.question.options[1],
                                           ),
                                         );
                                   },
                                   style: ElevatedButton.styleFrom(
-                                    backgroundColor: _getButtonColor(
+                                    backgroundColor: const Color(0xFF582E1A),
+                                    side: _getBorderStyle(
                                       state.selectedOption,
                                       state.question.options[1],
                                       state.feedbackBorder,
@@ -177,22 +173,20 @@ class QuestionPage extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              // Tombol untuk opsi C
                               SizedBox(
                                 width: 100,
                                 height: 100,
                                 child: ElevatedButton(
                                   onPressed: () {
-                                    // Kirim event untuk memilih jawaban
                                     context.read<GameBloc>().add(
                                           SelectAnswerEvent(
-                                            state.question.options[
-                                                2], // Pilih opsi ketiga
+                                            state.question.options[2],
                                           ),
                                         );
                                   },
                                   style: ElevatedButton.styleFrom(
-                                    backgroundColor: _getButtonColor(
+                                    backgroundColor: const Color(0xFF582E1A),
+                                    side: _getBorderStyle(
                                       state.selectedOption,
                                       state.question.options[2],
                                       state.feedbackBorder,
@@ -214,73 +208,6 @@ class QuestionPage extends StatelessWidget {
                             ],
                           ),
                         )
-
-                        // SizedBox(
-                        //   width: 500,
-                        //   child: Row(
-                        //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        //     crossAxisAlignment: CrossAxisAlignment.center,
-                        //     children: [
-                        //       SizedBox(
-                        //         width: 100,
-                        //         height: 100,
-                        //         child: ElevatedButton(
-                        //             onPressed: () {},
-                        //             style: ElevatedButton.styleFrom(
-                        //               backgroundColor: Color(0xFF582E1A),
-                        //               shape: RoundedRectangleBorder(
-                        //                 borderRadius: BorderRadius.circular(20),
-                        //               ),
-                        //             ),
-                        //             child: Text(
-                        //               'A',
-                        //               style: TextStyle(
-                        //                   fontFamily: 'Inter Bold',
-                        //                   fontSize: 50,
-                        //                   color: Color(0xFFFFFFFF)),
-                        //             )),
-                        //       ),
-                        //       SizedBox(
-                        //         width: 100,
-                        //         height: 100,
-                        //         child: ElevatedButton(
-                        //             onPressed: () {},
-                        //             style: ElevatedButton.styleFrom(
-                        //               backgroundColor: Color(0xFF582E1A),
-                        //               shape: RoundedRectangleBorder(
-                        //                 borderRadius: BorderRadius.circular(20),
-                        //               ),
-                        //             ),
-                        //             child: Text(
-                        //               'B',
-                        //               style: TextStyle(
-                        //                   fontFamily: 'Inter Bold',
-                        //                   fontSize: 50,
-                        //                   color: Color(0xFFFFFFFF)),
-                        //             )),
-                        //       ),
-                        //       SizedBox(
-                        //         width: 100,
-                        //         height: 100,
-                        //         child: ElevatedButton(
-                        //             onPressed: () {},
-                        //             style: ElevatedButton.styleFrom(
-                        //               backgroundColor: Color(0xFF582E1A),
-                        //               shape: RoundedRectangleBorder(
-                        //                 borderRadius: BorderRadius.circular(20),
-                        //               ),
-                        //             ),
-                        //             child: Text(
-                        //               'C',
-                        //               style: TextStyle(
-                        //                   fontFamily: 'Inter Bold',
-                        //                   fontSize: 50,
-                        //                   color: Color(0xFFFFFFFF)),
-                        //             )),
-                        //       ),
-                        //     ],
-                        //   ),
-                        // )
                       ],
                     ),
                   ),

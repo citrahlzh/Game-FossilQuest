@@ -15,7 +15,7 @@ final List<Fossil> fossils = [
   Fossil(
       name: 'Ikan',
       imagePath: '../../assets/images/fossil/ikan.png',
-      description: 'Ikan'),
+      description: 'Ikan'), 
   Fossil(
       name: 'Kepala',
       imagePath: '../../assets/images/fossil/kepala.png',

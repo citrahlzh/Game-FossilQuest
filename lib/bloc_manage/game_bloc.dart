@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:game_fossilquest/application/question.dart';
+import 'package:game_fossilquest/application/fossil.dart';
 
 part 'game_event.dart';
 part 'game_state.dart';
@@ -14,6 +15,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
     on<OnTapImageEvent>(_onTapImage);
     on<SelectAnswerEvent>(_onSelectAnswer);
     on<ShowQuestionEvent>(_onShowQuestion);
+    on<ShowResultEvent>(_onShowResult);
   }
 
   void _onStartGame(StartGameEvent event, Emitter<GameState> emit) {
@@ -50,6 +52,8 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   }
 
   void _onShowQuestion(ShowQuestionEvent event, Emitter<GameState> emit) {
+    print(
+        'ShowQuestionEvent diterima dengan pertanyaan: ${event.question.question}');
     emit(QuestionDisplayed(
       question: event.question,
       selectedOption: null,
@@ -71,6 +75,22 @@ class GameBloc extends Bloc<GameEvent, GameState> {
         selectedOption: event.selectedOption,
         feedbackBorder: feedbackBorder,
       ));
+
+      final isCorrect =
+          event.selectedOption == currentState.question.correctAnswer;
+
+      Future.delayed(const Duration(seconds: 2), () {
+        add(ShowResultEvent(isCorrect));
+      });
+    }
+  }
+
+  void _onShowResult(ShowResultEvent event, Emitter<GameState> emit) {
+    if (event.isCorrect) {
+      final randomFossil = (fossils..shuffle()).first;
+      emit(ResultDisplayed(isCorrect: true, fossil: randomFossil));
+    } else {
+      emit(ResultDisplayed(isCorrect: false, fossil: null));
     }
   }
 }

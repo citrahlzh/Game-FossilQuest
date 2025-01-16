@@ -28,3 +28,9 @@ class SelectAnswerEvent extends GameEvent {
 
   SelectAnswerEvent(this.selectedOption);
 }
+
+class ShowResultEvent extends GameEvent {
+  final bool isCorrect;
+
+  ShowResultEvent(this.isCorrect);
+}

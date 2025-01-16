@@ -32,3 +32,10 @@ class QuestionDisplayed extends GameState {
     this.feedbackBorder,
   });
 }
+
+class ResultDisplayed extends GameState {
+  final bool isCorrect;
+  final Fossil? fossil;
+
+  ResultDisplayed({required this.isCorrect, this.fossil});
+}

@@ -20,6 +20,7 @@ class GamePage extends StatelessWidget {
             if (state is QuestionDisplayed) {
               WidgetsBinding.instance.addPostFrameCallback((_) {
                 showDialog(
+                  barrierDismissible: false,
                   context: context,
                   builder: (context) => QuestionPage(question: state.question),
                 );
