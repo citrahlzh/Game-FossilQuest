@@ -16,6 +16,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
     on<SelectAnswerEvent>(_onSelectAnswer);
     on<ShowQuestionEvent>(_onShowQuestion);
     on<ShowResultEvent>(_onShowResult);
+    on<RestoreGameStateEvent>(_onRestoreGameState);
   }
 
   void _onStartGame(StartGameEvent event, Emitter<GameState> emit) {
@@ -52,10 +53,19 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   }
 
   void _onShowQuestion(ShowQuestionEvent event, Emitter<GameState> emit) {
-    print(
-        'ShowQuestionEvent diterima dengan pertanyaan: ${event.question.question}');
+    if (state is GameInProgress) {
+      final currentState = state as GameInProgress;
+
+      emit(GameInProgress(
+        images: currentState.images,
+        positions: currentState.positions,
+        overlayImages: currentState.overlayImages,
+      ));
+    }
+
     emit(QuestionDisplayed(
       question: event.question,
+      shuffledOptions: event.question.getShuffledOptions(),
       selectedOption: null,
       feedbackBorder: null,
     ));
@@ -65,32 +75,47 @@ class GameBloc extends Bloc<GameEvent, GameState> {
     if (state is QuestionDisplayed) {
       final currentState = state as QuestionDisplayed;
 
-      final feedbackBorder =
-          event.selectedOption == currentState.question.correctAnswer
-              ? 'correct'
-              : 'wrong';
-
-      emit(QuestionDisplayed(
-        question: currentState.question,
-        selectedOption: event.selectedOption,
-        feedbackBorder: feedbackBorder,
-      ));
-
       final isCorrect =
           event.selectedOption == currentState.question.correctAnswer;
 
-      Future.delayed(const Duration(seconds: 2), () {
+      emit(QuestionDisplayed(
+        question: currentState.question,
+        shuffledOptions: currentState.shuffledOptions,
+        selectedOption: event.selectedOption,
+        feedbackBorder: isCorrect ? 'correct' : 'wrong',
+      ));
+
+      Future.delayed(const Duration(seconds: 1), () {
         add(ShowResultEvent(isCorrect));
       });
     }
   }
 
   void _onShowResult(ShowResultEvent event, Emitter<GameState> emit) {
-    if (event.isCorrect) {
-      final randomFossil = (fossils..shuffle()).first;
-      emit(ResultDisplayed(isCorrect: true, fossil: randomFossil));
+    if (state is QuestionDisplayed) {
+      if (event.isCorrect) {
+        final randomFossil = (fossils..shuffle()).first;
+        emit(ResultDisplayed(isCorrect: true, fossil: randomFossil));
+      } else {
+        emit(ResultDisplayed(isCorrect: false, fossil: null));
+        // if (state is GameInProgress) {
+        //   final previousState = state as GameInProgress;
+        //   emit(GameInProgress(
+        //     images: previousState.images,
+        //     positions: previousState.positions,
+        //     overlayImages: previousState.overlayImages,
+        //   ));
+        // }
+      }
+    }
+  }
+
+  void _onRestoreGameState(
+      RestoreGameStateEvent event, Emitter<GameState> emit) {
+    if (state is GameInProgress) {
+      emit(state);
     } else {
-      emit(ResultDisplayed(isCorrect: false, fossil: null));
+      print('Tidak ada state GameInProgress untuk dikembalikan');
     }
   }
 }

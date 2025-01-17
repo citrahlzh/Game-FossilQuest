@@ -34,3 +34,5 @@ class ShowResultEvent extends GameEvent {
 
   ShowResultEvent(this.isCorrect);
 }
+
+class RestoreGameStateEvent extends GameEvent {}
