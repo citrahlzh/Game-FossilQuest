@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:game_fossilquest/collection/fossils.dart';
+import 'package:game_fossilquest/collection/isar_service.dart';
 import 'package:game_fossilquest/bloc_manage/game_bloc.dart';
-import 'package:game_fossilquest/application/fossil.dart';
 
 class Question {
   final String question;
@@ -41,7 +42,7 @@ List<Question> questions = [
 class QuestionPage extends StatelessWidget {
   final Question question;
 
-  const QuestionPage({required this.question, Key? key}) : super(key: key);
+  const QuestionPage({required this.question, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -61,9 +62,14 @@ class QuestionPage extends StatelessWidget {
                   if (!state.isCorrect) {
                     return GestureDetector(
                       onTap: () {
-                        Navigator.of(context).pop(); // Tutup dialog
+                        final screenWidth = MediaQuery.of(context).size.width;
+                        final screenHeight = MediaQuery.of(context).size.height;
+
+                        Navigator.of(context).pop();
                         context.read<GameBloc>().add(
-                              RestoreGameStateEvent(), // Kembali ke state sebelumnya
+                              StartGameEvent(
+                                  screenWidth: screenWidth,
+                                  screenHeight: screenHeight),
                             );
                       },
                       child: AlertDialog(
@@ -108,7 +114,9 @@ class QuestionPage extends StatelessWidget {
                       ),
                     );
                   } else {
+                    final isarService = IsarService();
                     final fossil = state.fossil!;
+
                     if (['Daun', 'Tulang', 'Kepala', 'Kerang', 'Ikan']
                         .contains(fossil.name)) {
                       return AlertDialog(
@@ -155,7 +163,17 @@ class QuestionPage extends StatelessWidget {
                                             height: 70,
                                             width: 400,
                                             child: ElevatedButton(
-                                              onPressed: () {},
+                                              onPressed: () async {
+                                                final isarFossil = FossilData(
+                                                  name: fossil.name,
+                                                  imagePath: fossil.imagePath,
+                                                  description:
+                                                      fossil.description,
+                                                );
+                                                await isarService
+                                                    .addFossil(isarFossil);
+                                                Navigator.of(context).pop();
+                                              },
                                               style: ElevatedButton.styleFrom(
                                                 backgroundColor:
                                                     Color(0xFF582E1A),
@@ -280,7 +298,16 @@ class QuestionPage extends StatelessWidget {
                                           height: 70,
                                           width: 700,
                                           child: ElevatedButton(
-                                            onPressed: () {},
+                                            onPressed: () async {
+                                              final isarFossil = FossilData(
+                                                name: fossil.name,
+                                                imagePath: fossil.imagePath,
+                                                description: fossil.description,
+                                              );
+                                              await isarService
+                                                  .addFossil(isarFossil);
+                                              Navigator.of(context).pop();
+                                            },
                                             style: ElevatedButton.styleFrom(
                                               backgroundColor:
                                                   Color(0xFF582E1A),
@@ -313,15 +340,6 @@ class QuestionPage extends StatelessWidget {
           },
           builder: (context, state) {
             return BlocBuilder<GameBloc, GameState>(builder: (context, state) {
-              //           if (state is GameInProgress) {
-              //   // Render ulang game page
-              //   return GamePage(
-              //     images: state.images,
-              //     positions: state.positions,
-              //     overlayImages: state.overlayImages,
-              //   );
-              // }
-
               if (state is QuestionDisplayed) {
                 final optionString = [
                   'A. ${state.shuffledOptions[0]}',
@@ -329,7 +347,7 @@ class QuestionPage extends StatelessWidget {
                   'C. ${state.shuffledOptions[2]}',
                 ].join('\n');
 
-                BorderSide _getBorderStyle(
+                BorderSide getBorderStyle(
                   String? selectedOption,
                   String currentOption,
                   String? feedbackBorder,
@@ -417,7 +435,7 @@ class QuestionPage extends StatelessWidget {
                                           style: ElevatedButton.styleFrom(
                                             backgroundColor:
                                                 const Color(0xFF582E1A),
-                                            side: _getBorderStyle(
+                                            side: getBorderStyle(
                                               state.selectedOption,
                                               option,
                                               state.feedbackBorder,
@@ -440,120 +458,6 @@ class QuestionPage extends StatelessWidget {
                                     }).toList(),
                                   ),
                                 ),
-
-                                // SizedBox(
-                                //   width: 500,
-                                //   child: Row(
-                                //     mainAxisAlignment:
-                                //         MainAxisAlignment.spaceEvenly,
-                                //     crossAxisAlignment:
-                                //         CrossAxisAlignment.center,
-                                //     children: [
-                                //       SizedBox(
-                                //         width: 100,
-                                //         height: 100,
-                                //         child: ElevatedButton(
-                                //           onPressed: () {
-                                //             context.read<GameBloc>().add(
-                                //                   SelectAnswerEvent(
-                                //                     state.question.options[0],
-                                //                   ),
-                                //                 );
-                                //           },
-                                //           style: ElevatedButton.styleFrom(
-                                //             backgroundColor:
-                                //                 const Color(0xFF582E1A),
-                                //             side: _getBorderStyle(
-                                //               state.selectedOption,
-                                //               state.question.options[0],
-                                //               state.feedbackBorder,
-                                //             ),
-                                //             shape: RoundedRectangleBorder(
-                                //               borderRadius:
-                                //                   BorderRadius.circular(20),
-                                //             ),
-                                //           ),
-                                //           child: const Text(
-                                //             'A',
-                                //             style: TextStyle(
-                                //               fontFamily: 'Inter Bold',
-                                //               fontSize: 50,
-                                //               color: Colors.white,
-                                //             ),
-                                //           ),
-                                //         ),
-                                //       ),
-                                //       SizedBox(
-                                //         width: 100,
-                                //         height: 100,
-                                //         child: ElevatedButton(
-                                //           onPressed: () {
-                                //             context.read<GameBloc>().add(
-                                //                   SelectAnswerEvent(
-                                //                     state.question.options[1],
-                                //                   ),
-                                //                 );
-                                //           },
-                                //           style: ElevatedButton.styleFrom(
-                                //             backgroundColor:
-                                //                 const Color(0xFF582E1A),
-                                //             side: _getBorderStyle(
-                                //               state.selectedOption,
-                                //               state.question.options[1],
-                                //               state.feedbackBorder,
-                                //             ),
-                                //             shape: RoundedRectangleBorder(
-                                //               borderRadius:
-                                //                   BorderRadius.circular(20),
-                                //             ),
-                                //           ),
-                                //           child: const Text(
-                                //             'B',
-                                //             style: TextStyle(
-                                //               fontFamily: 'Inter Bold',
-                                //               fontSize: 50,
-                                //               color: Colors.white,
-                                //             ),
-                                //           ),
-                                //         ),
-                                //       ),
-                                //       SizedBox(
-                                //         width: 100,
-                                //         height: 100,
-                                //         child: ElevatedButton(
-                                //           onPressed: () {
-                                //             context.read<GameBloc>().add(
-                                //                   SelectAnswerEvent(
-                                //                     state.question.options[2],
-                                //                   ),
-                                //                 );
-                                //           },
-                                //           style: ElevatedButton.styleFrom(
-                                //             backgroundColor:
-                                //                 const Color(0xFF582E1A),
-                                //             side: _getBorderStyle(
-                                //               state.selectedOption,
-                                //               state.question.options[2],
-                                //               state.feedbackBorder,
-                                //             ),
-                                //             shape: RoundedRectangleBorder(
-                                //               borderRadius:
-                                //                   BorderRadius.circular(20),
-                                //             ),
-                                //           ),
-                                //           child: const Text(
-                                //             'C',
-                                //             style: TextStyle(
-                                //               fontFamily: 'Inter Bold',
-                                //               fontSize: 50,
-                                //               color: Colors.white,
-                                //             ),
-                                //           ),
-                                //         ),
-                                //       ),
-                                //     ],
-                                //   ),
-                                // )
                               ],
                             ),
                           ),

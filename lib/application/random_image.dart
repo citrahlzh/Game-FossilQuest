@@ -7,7 +7,7 @@ class RandomImage extends StatelessWidget {
   final VoidCallback? onDoubleTap;
 
   const RandomImage(
-      {required this.image,
+      {super.key, required this.image,
       required this.position,
       this.onTap,
       this.onDoubleTap});

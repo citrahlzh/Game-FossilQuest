@@ -16,7 +16,8 @@ class GameBloc extends Bloc<GameEvent, GameState> {
     on<SelectAnswerEvent>(_onSelectAnswer);
     on<ShowQuestionEvent>(_onShowQuestion);
     on<ShowResultEvent>(_onShowResult);
-    on<RestoreGameStateEvent>(_onRestoreGameState);
+    // on<ResetGameEvent>(_onResetGame);
+    // on<RestoreGameStateEvent>(_onRestoreGameState);
   }
 
   void _onStartGame(StartGameEvent event, Emitter<GameState> emit) {
@@ -98,24 +99,36 @@ class GameBloc extends Bloc<GameEvent, GameState> {
         emit(ResultDisplayed(isCorrect: true, fossil: randomFossil));
       } else {
         emit(ResultDisplayed(isCorrect: false, fossil: null));
-        // if (state is GameInProgress) {
-        //   final previousState = state as GameInProgress;
-        //   emit(GameInProgress(
-        //     images: previousState.images,
-        //     positions: previousState.positions,
-        //     overlayImages: previousState.overlayImages,
-        //   ));
-        // }
       }
     }
   }
 
-  void _onRestoreGameState(
-      RestoreGameStateEvent event, Emitter<GameState> emit) {
-    if (state is GameInProgress) {
-      emit(state);
-    } else {
-      print('Tidak ada state GameInProgress untuk dikembalikan');
-    }
-  }
+//   void _onResetGame(ResetGameEvent event, Emitter<GameState> emit) {
+//   // Generate gambar dan posisi baru
+//   final random = Random();
+//   final images = List.generate(3, (_) => '/assets/images/cracked.png');
+//   final positions = List.generate(
+//     3,
+//     (_) => Offset(
+//       random.nextDouble() * (event.screenWidth - 100), // Lebar acak
+//       random.nextDouble() * (event.screenHeight - 100), // Tinggi acak
+//     ),
+//   );
+
+//   // Emit state baru untuk permainan
+//   emit(GameInProgress(
+//     images: images,
+//     positions: positions,
+//     overlayImages: {}, // Reset overlay
+//   ));
+// }
+
+  // void _onRestoreGameState(
+  //     RestoreGameStateEvent event, Emitter<GameState> emit) {
+  //   if (state is GameInProgress) {
+  //     emit(state);
+  //   } else {
+  //     print('Tidak ada state GameInProgress untuk dikembalikan');
+  //   }
+  // }
 }
