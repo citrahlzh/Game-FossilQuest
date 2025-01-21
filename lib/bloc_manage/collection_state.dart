@@ -4,7 +4,7 @@ abstract class CollectionState extends Equatable {
   const CollectionState();
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }
 
 class CollectionInitial extends CollectionState {}
@@ -12,12 +12,12 @@ class CollectionInitial extends CollectionState {}
 class CollectionLoading extends CollectionState {}
 
 class CollectionLoaded extends CollectionState {
-  final List<FossilData> fossils;
+  final List<Fossil> fossils;
 
   const CollectionLoaded({required this.fossils});
 
   @override
-  List<Object> get props => [fossils];
+  List<Object?> get props => [fossils];
 }
 
 class CollectionError extends CollectionState {
@@ -26,5 +26,5 @@ class CollectionError extends CollectionState {
   const CollectionError({required this.message});
 
   @override
-  List<Object> get props => [message];
+  List<Object?> get props => [message];
 }

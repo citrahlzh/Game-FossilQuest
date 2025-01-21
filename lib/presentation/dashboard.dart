@@ -16,7 +16,7 @@ class DashboardPage extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Color(0xFFD4A373),
                 image: DecorationImage(
-                    image: AssetImage('../../assets/images/background.png'),
+                    image: AssetImage('assets/images/background.png'),
                     fit: BoxFit.cover,
                     opacity: 1.0),
               ),
@@ -28,7 +28,7 @@ class DashboardPage extends StatelessWidget {
                     SizedBox(
                       height: 420,
                       child: Image(
-                        image: AssetImage('../../assets/images/title.png'),
+                        image: AssetImage('assets/images/title.png'),
                         fit: BoxFit.fitHeight,
                       ),
                     ),
@@ -64,8 +64,8 @@ class DashboardPage extends StatelessWidget {
                             child: Padding(
                               padding: const EdgeInsets.all(50),
                               child: Image(
-                                image: AssetImage(
-                                    '../../assets/images/play_button.png'),
+                                image:
+                                    AssetImage('assets/images/play_button.png'),
                                 fit: BoxFit.scaleDown,
                               ),
                             ),

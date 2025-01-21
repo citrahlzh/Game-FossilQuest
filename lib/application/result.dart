@@ -16,39 +16,52 @@
 //             barrierDismissible: false,
 //             builder: (context) {
 //               if (!state.isCorrect) {
-//                 AlertDialog(
-//                   backgroundColor: Colors.transparent,
-//                   content: Center(
-//                     child: SizedBox(
-//                       width: 850,
-//                       height: 500,
-//                       child: DecoratedBox(
-//                         decoration: BoxDecoration(
-//                             color: Color(0xFFE29F5D),
-//                             borderRadius:
-//                                 BorderRadius.all(Radius.circular(30))),
-//                         child: Center(
-//                           child: Padding(
-//                             padding: const EdgeInsets.all(30),
-//                             child: Column(
-//                                 mainAxisAlignment:
-//                                     MainAxisAlignment.spaceEvenly,
-//                                 crossAxisAlignment: CrossAxisAlignment.center,
-//                                 children: [
-//                                   Text(
-//                                     'KAMU SALAH',
-//                                     style: TextStyle(
-//                                       fontFamily: 'League Spartan Bold',
-//                                       fontSize: 75,
-//                                       color: Color(0xFF3f1400),
-//                                     ),
-//                                   ),
-//                                   Text('Fossil tak jadi didapatkan',
+//                 return GestureDetector(
+//                   onTap: () {
+//                     final screenWidth = MediaQuery.of(context).size.width;
+//                     final screenHeight = MediaQuery.of(context).size.height;
+
+//                     Navigator.of(context).pop();
+//                     context.read<GameBloc>().add(
+//                           StartGameEvent(
+//                               screenWidth: screenWidth,
+//                               screenHeight: screenHeight),
+//                         );
+//                   },
+//                   child: AlertDialog(
+//                     backgroundColor: Colors.transparent,
+//                     content: Center(
+//                       child: SizedBox(
+//                         width: 850,
+//                         height: 500,
+//                         child: DecoratedBox(
+//                           decoration: BoxDecoration(
+//                               color: Color(0xFFE29F5D),
+//                               borderRadius:
+//                                   BorderRadius.all(Radius.circular(30))),
+//                           child: Center(
+//                             child: Padding(
+//                               padding: const EdgeInsets.all(30),
+//                               child: Column(
+//                                   mainAxisAlignment:
+//                                       MainAxisAlignment.spaceEvenly,
+//                                   crossAxisAlignment: CrossAxisAlignment.center,
+//                                   children: [
+//                                     Text(
+//                                       'KAMU SALAH',
 //                                       style: TextStyle(
-//                                           fontFamily: 'Montserrat Bold',
-//                                           color: Color(0xFF3F1400),
-//                                           fontSize: 50)),
-//                                 ]),
+//                                         fontFamily: 'League Spartan Bold',
+//                                         fontSize: 75,
+//                                         color: Color(0xFF3f1400),
+//                                       ),
+//                                     ),
+//                                     Text('Fossil tak jadi didapatkan',
+//                                         style: TextStyle(
+//                                             fontFamily: 'Montserrat Bold',
+//                                             color: Color(0xFF3F1400),
+//                                             fontSize: 50)),
+//                                   ]),
+//                             ),
 //                           ),
 //                         ),
 //                       ),
@@ -56,8 +69,10 @@
 //                   ),
 //                 );
 //               } else {
+//                 // final isarService = IsarService();
 //                 final fossil = state.fossil!;
-//                 if (['Daun', 'Tulang', 'Kepala', 'Kerang']
+
+//                 if (['Daun', 'Tulang', 'Kepala', 'Kerang', 'Ikan']
 //                     .contains(fossil.name)) {
 //                   return AlertDialog(
 //                       backgroundColor: Colors.transparent,
@@ -97,13 +112,22 @@
 //                                               fontWeight: FontWeight.bold)),
 //                                       Image(
 //                                         fit: BoxFit.cover,
-//                                         image: AssetImage(fossils[0].imagePath),
+//                                         image: AssetImage(fossil.imagePath),
 //                                       ),
 //                                       SizedBox(
 //                                         height: 70,
 //                                         width: 400,
 //                                         child: ElevatedButton(
-//                                           onPressed: () {},
+//                                           onPressed: () {
+//                                             // final isarFossil = FossilData(
+//                                             //   name: fossil.name,
+//                                             //   imagePath: fossil.imagePath,
+//                                             //   description: fossil.description,
+//                                             // );
+//                                             // await isarService
+//                                             //     .addFossil(isarFossil);
+//                                             // Navigator.of(context).pop();
+//                                           },
 //                                           style: ElevatedButton.styleFrom(
 //                                             backgroundColor: Color(0xFF582E1A),
 //                                             shape: RoundedRectangleBorder(
@@ -177,7 +201,7 @@
 //                                               Image(
 //                                                 fit: BoxFit.cover,
 //                                                 image: AssetImage(
-//                                                     fossils[4].imagePath),
+//                                                     fossil.imagePath),
 //                                               )
 //                                             ],
 //                                           ),
@@ -191,7 +215,7 @@
 //                                                   CrossAxisAlignment.start,
 //                                               children: [
 //                                                 Text(
-//                                                   fossils[4].name,
+//                                                   fossil.name,
 //                                                   style: TextStyle(
 //                                                     fontFamily:
 //                                                         'League Spartan Bold',
@@ -200,12 +224,12 @@
 //                                                   ),
 //                                                 ),
 //                                                 Text(
-//                                                   fossils[4].description,
+//                                                   fossil.description,
 //                                                   style: TextStyle(
 //                                                       fontFamily:
 //                                                           'Montserrat Medium',
 //                                                       color: Color(0xFF3F1400),
-//                                                       fontSize: 30,
+//                                                       fontSize: 25,
 //                                                       fontWeight:
 //                                                           FontWeight.w500),
 //                                                 ),
@@ -219,7 +243,16 @@
 //                                       height: 70,
 //                                       width: 700,
 //                                       child: ElevatedButton(
-//                                         onPressed: () {},
+//                                         onPressed: () {
+//                                           // final isarFossil = FossilData(
+//                                           //   name: fossil.name,
+//                                           //   imagePath: fossil.imagePath,
+//                                           //   description: fossil.description,
+//                                           // );
+//                                           // await isarService
+//                                           //     .addFossil(isarFossil);
+//                                           // Navigator.of(context).pop();
+//                                         },
 //                                         style: ElevatedButton.styleFrom(
 //                                           backgroundColor: Color(0xFF582E1A),
 //                                           shape: RoundedRectangleBorder(

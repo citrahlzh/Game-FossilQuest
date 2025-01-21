@@ -46,7 +46,7 @@ class GuidePage extends StatelessWidget {
                                     width: 200,
                                     child: Image(
                                         image: AssetImage(
-                                            '../../assets/images/guide/guide1.png')),
+                                            'assets/images/guide/guide1.png')),
                                   ),
                                   SizedBox(height: 8),
                                   SizedBox(
@@ -88,7 +88,7 @@ class GuidePage extends StatelessWidget {
                                     width: 200,
                                     child: Image(
                                         image: AssetImage(
-                                            '../../assets/images/guide/guide2.png')),
+                                            'assets/images/guide/guide2.png')),
                                   ),
                                   SizedBox(height: 8),
                                   SizedBox(
@@ -133,7 +133,7 @@ class GuidePage extends StatelessWidget {
                                         width: 200,
                                         child: Image(
                                             image: AssetImage(
-                                                '../../assets/images/guide/guide3.png')),
+                                                'assets/images/guide/guide3.png')),
                                       ),
                                       SizedBox(width: 8),
                                       SizedBox(
@@ -177,7 +177,7 @@ class GuidePage extends StatelessWidget {
                                         width: 200,
                                         child: Image(
                                             image: AssetImage(
-                                                '../../assets/images/guide/guide4.png')),
+                                                'assets/images/guide/guide4.png')),
                                       ),
                                       SizedBox(width: 8),
                                       SizedBox(

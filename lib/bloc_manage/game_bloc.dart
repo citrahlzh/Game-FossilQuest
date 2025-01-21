@@ -21,7 +21,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   }
 
   void _onStartGame(StartGameEvent event, Emitter<GameState> emit) {
-    final images = List.generate(3, (_) => '/assets/images/cracked.png');
+    final images = List.generate(3, (_) => 'assets/images/cracked.png');
     final position = List.generate(
       3,
       (_) {
@@ -41,7 +41,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
 
       final updatedOverlayImages =
           Map<int, String>.from(currentState.overlayImages);
-      updatedOverlayImages[event.index] = '/assets/images/revealed.png';
+      updatedOverlayImages[event.index] = 'assets/images/revealed.png';
 
       lastTappedIndex = event.index;
 

@@ -103,7 +103,7 @@ class GamePage extends StatelessWidget {
                           height: 80,
                           child: Image(
                             image: Image.asset(
-                                    '../../assets/images/back_button.png')
+                                    'assets/images/back_button.png')
                                 .image,
                           ),
                         )),
@@ -132,7 +132,7 @@ class GamePage extends StatelessWidget {
                             height: 50,
                             child: Image(
                               image: Image.asset(
-                                      '../../assets/images/guide_button.png')
+                                      'assets/images/guide_button.png')
                                   .image,
                             ),
                           ),
@@ -163,7 +163,7 @@ class GamePage extends StatelessWidget {
                             height: 75,
                             child: Image(
                               image: Image.asset(
-                                      '../../assets/images/collection_button.png')
+                                      'assets/images/collection_button.png')
                                   .image,
                             ),
                           ),

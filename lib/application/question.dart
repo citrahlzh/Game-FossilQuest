@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:game_fossilquest/collection/fossils.dart';
-import 'package:game_fossilquest/collection/isar_service.dart';
+import 'package:game_fossilquest/database/app_database.dart';
 import 'package:game_fossilquest/bloc_manage/game_bloc.dart';
 
 class Question {
@@ -114,7 +113,8 @@ class QuestionPage extends StatelessWidget {
                       ),
                     );
                   } else {
-                    final isarService = IsarService();
+                    final AppDatabase database;
+                    // final isarService = IsarService();
                     final fossil = state.fossil!;
 
                     if (['Daun', 'Tulang', 'Kepala', 'Kerang', 'Ikan']
@@ -163,16 +163,15 @@ class QuestionPage extends StatelessWidget {
                                             height: 70,
                                             width: 400,
                                             child: ElevatedButton(
-                                              onPressed: () async {
-                                                final isarFossil = FossilData(
-                                                  name: fossil.name,
-                                                  imagePath: fossil.imagePath,
-                                                  description:
-                                                      fossil.description,
-                                                );
-                                                await isarService
-                                                    .addFossil(isarFossil);
-                                                Navigator.of(context).pop();
+                                              onPressed: () {
+                                                // final isarFossil = FossilData(
+                                                //   name: fossil.name,
+                                                //   imagePath: fossil.imagePath,
+                                                //   description: fossil.description,
+                                                // );
+                                                // await isarService
+                                                //     .addFossil(isarFossil);
+                                                // Navigator.of(context).pop();
                                               },
                                               style: ElevatedButton.styleFrom(
                                                 backgroundColor:
@@ -298,15 +297,15 @@ class QuestionPage extends StatelessWidget {
                                           height: 70,
                                           width: 700,
                                           child: ElevatedButton(
-                                            onPressed: () async {
-                                              final isarFossil = FossilData(
-                                                name: fossil.name,
-                                                imagePath: fossil.imagePath,
-                                                description: fossil.description,
-                                              );
-                                              await isarService
-                                                  .addFossil(isarFossil);
-                                              Navigator.of(context).pop();
+                                            onPressed: () {
+                                              // final isarFossil = FossilData(
+                                              //   name: fossil.name,
+                                              //   imagePath: fossil.imagePath,
+                                              //   description: fossil.description,
+                                              // );
+                                              // await isarService
+                                              //     .addFossil(isarFossil);
+                                              // Navigator.of(context).pop();
                                             },
                                             style: ElevatedButton.styleFrom(
                                               backgroundColor:
