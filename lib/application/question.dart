@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:game_fossilquest/database/app_database.dart';
+import 'package:game_fossilquest/bloc_manage/collection_bloc.dart';
+// import 'package:game_fossilquest/database/app_database.dart';
 import 'package:game_fossilquest/bloc_manage/game_bloc.dart';
+import 'package:game_fossilquest/database/app_database.dart';
 
 class Question {
   final String question;
@@ -45,12 +47,17 @@ class QuestionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-        create: (context) {
-          final gamebloc = GameBloc();
-          gamebloc.add(ShowQuestionEvent(questions[0]));
-          return gamebloc;
-        },
+    return MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) {
+              final gamebloc = GameBloc();
+              gamebloc.add(ShowQuestionEvent(questions[0]));
+              return gamebloc;
+            },
+          ),
+          BlocProvider(create: (context) => CollectionBloc(AppDatabase()))
+        ],
         child: BlocConsumer<GameBloc, GameState>(
           listener: (context, state) {
             if (state is ResultDisplayed) {
@@ -113,7 +120,7 @@ class QuestionPage extends StatelessWidget {
                       ),
                     );
                   } else {
-                    final AppDatabase database;
+                    // final AppDatabase database;
                     // final isarService = IsarService();
                     final fossil = state.fossil!;
 
