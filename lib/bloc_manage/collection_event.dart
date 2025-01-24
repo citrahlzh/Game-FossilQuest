@@ -10,10 +10,7 @@ abstract class CollectionEvent extends Equatable {
 class LoadCollectionEvent extends CollectionEvent {}
 
 class AddFossilEvent extends CollectionEvent {
-  final Fossil fossil;
+  final FossilsCompanion fossil;
 
-  const AddFossilEvent(this.fossil);
-
-  @override
-  List<Object?> get props => [fossil];
+  AddFossilEvent({required this.fossil});
 }

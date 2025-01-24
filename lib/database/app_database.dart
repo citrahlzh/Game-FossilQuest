@@ -23,7 +23,7 @@ class AppDatabase extends _$AppDatabase {
 
   Future<List<Fossil>> getAllFossils() => select(fossils).get();
 
-  Future<int> insertFossil(Fossil fossil) => into(fossils).insert(fossil);
+  Future<int> insertFossil(FossilsCompanion fossil) => into(fossils).insert(fossil);
 
   Future<void> clearFossils() => delete(fossils).go();
 }

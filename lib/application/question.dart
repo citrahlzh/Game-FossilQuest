@@ -1,44 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:drift/drift.dart' as drift;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:game_fossilquest/bloc_manage/collection_bloc.dart';
-// import 'package:game_fossilquest/database/app_database.dart';
 import 'package:game_fossilquest/bloc_manage/game_bloc.dart';
 import 'package:game_fossilquest/database/app_database.dart';
-
-class Question {
-  final String question;
-  final List<String> options;
-  final String correctAnswer;
-
-  Question(
-      {required this.question,
-      required this.options,
-      required this.correctAnswer});
-
-  List<String> getShuffledOptions() {
-    final shuffledOptions = List<String>.from(options)..shuffle();
-    return shuffledOptions;
-  }
-}
-
-List<Question> questions = [
-  Question(
-      question: 'What is the capital of France?',
-      options: ['Paris', 'London', 'Berlin'],
-      correctAnswer: 'Paris'),
-  Question(
-      question: 'What is the largest planet in our solar system?',
-      options: ['Mars', 'Jupiter', 'Saturn'],
-      correctAnswer: 'Jupiter'),
-  Question(
-      question: 'Who painted the Mona Lisa?',
-      options: ['Leonardo da Vinci', 'Pablo Picasso', 'Vincent van Gogh'],
-      correctAnswer: 'Leonardo da Vinci'),
-  Question(
-      question: 'What is the chemical symbol for gold?',
-      options: ['Ag', 'Au', 'Cu'],
-      correctAnswer: 'Au'),
-];
+import 'package:game_fossilquest/presentation/collection.dart';
+import 'package:game_fossilquest/application/questions_data.dart';
 
 class QuestionPage extends StatelessWidget {
   final Question question;
@@ -171,14 +138,30 @@ class QuestionPage extends StatelessWidget {
                                             width: 400,
                                             child: ElevatedButton(
                                               onPressed: () {
-                                                // final isarFossil = FossilData(
-                                                //   name: fossil.name,
-                                                //   imagePath: fossil.imagePath,
-                                                //   description: fossil.description,
-                                                // );
-                                                // await isarService
-                                                //     .addFossil(isarFossil);
-                                                // Navigator.of(context).pop();
+                                                final fossilToAdd =
+                                                    FossilsCompanion(
+                                                  name:
+                                                      drift.Value(fossil.name),
+                                                  imagePath: drift.Value(
+                                                      fossil.imagePath),
+                                                  description: drift.Value(
+                                                      fossil.description),
+                                                );
+                                                context
+                                                    .read<CollectionBloc>()
+                                                    .add(AddFossilEvent(
+                                                        fossil: fossilToAdd));
+                                                Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            BlocProvider(
+                                                              create: (context) =>
+                                                                  CollectionBloc(
+                                                                      AppDatabase()),
+                                                              child:
+                                                                  CollectionPage(),
+                                                            )));
                                               },
                                               style: ElevatedButton.styleFrom(
                                                 backgroundColor:
@@ -305,14 +288,29 @@ class QuestionPage extends StatelessWidget {
                                           width: 700,
                                           child: ElevatedButton(
                                             onPressed: () {
-                                              // final isarFossil = FossilData(
-                                              //   name: fossil.name,
-                                              //   imagePath: fossil.imagePath,
-                                              //   description: fossil.description,
-                                              // );
-                                              // await isarService
-                                              //     .addFossil(isarFossil);
-                                              // Navigator.of(context).pop();
+                                              final fossilToAdd =
+                                                  FossilsCompanion(
+                                                name: drift.Value(fossil.name),
+                                                imagePath: drift.Value(
+                                                    fossil.imagePath),
+                                                description: drift.Value(
+                                                    fossil.description),
+                                              );
+                                              context
+                                                  .read<CollectionBloc>()
+                                                  .add(AddFossilEvent(
+                                                      fossil: fossilToAdd));
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          BlocProvider(
+                                                            create: (context) =>
+                                                                CollectionBloc(
+                                                                    AppDatabase()),
+                                                            child:
+                                                                CollectionPage(),
+                                                          )));
                                             },
                                             style: ElevatedButton.styleFrom(
                                               backgroundColor:

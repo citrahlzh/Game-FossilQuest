@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:game_fossilquest/application/question.dart';
+import 'package:game_fossilquest/application/questions_data.dart';
 import 'package:game_fossilquest/application/fossil.dart';
 
 part 'game_event.dart';

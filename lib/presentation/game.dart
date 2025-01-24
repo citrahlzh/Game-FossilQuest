@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:game_fossilquest/application/questions_data.dart';
 import 'package:game_fossilquest/application/question.dart';
 import 'package:game_fossilquest/application/random_image.dart';
 import 'package:game_fossilquest/application/guide.dart';
@@ -102,8 +103,7 @@ class GamePage extends StatelessWidget {
                         child: SizedBox(
                           height: 80,
                           child: Image(
-                            image: Image.asset(
-                                    'assets/images/back_button.png')
+                            image: Image.asset('assets/images/back_button.png')
                                 .image,
                           ),
                         )),
@@ -131,9 +131,9 @@ class GamePage extends StatelessWidget {
                           child: SizedBox(
                             height: 50,
                             child: Image(
-                              image: Image.asset(
-                                      'assets/images/guide_button.png')
-                                  .image,
+                              image:
+                                  Image.asset('assets/images/guide_button.png')
+                                      .image,
                             ),
                           ),
                         )),
