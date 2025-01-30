@@ -24,7 +24,17 @@ class GamePage extends StatelessWidget {
                   barrierDismissible: false,
                   context: context,
                   builder: (context) => QuestionPage(question: state.question),
-                );
+                ).then((result) {
+                  if (result != null && result == "reload") {
+                    final screenWidth = MediaQuery.of(context).size.width;
+                    final screenHeight = MediaQuery.of(context).size.height;
+                    context.read<GameBloc>().add(
+                          StartGameEvent(
+                              screenWidth: screenWidth,
+                              screenHeight: screenHeight),
+                        );
+                  }
+                });
               });
             }
 
