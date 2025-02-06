@@ -39,18 +39,9 @@ class QuestionPage extends StatelessWidget {
                     if (!state.isCorrect) {
                       return GestureDetector(
                         onTap: () {
-                          // final screenWidth = MediaQuery.of(context).size.width;
-                          // final screenHeight =
-                          //     MediaQuery.of(context).size.height;
-
                           Navigator.of(context).pop(); // Tutup dialog
                           Navigator.of(context)
                               .pop("reload"); // Tutup halaman question
-                          // globalContext.read<GameBloc>().add(
-                          //       StartGameEvent(
-                          //           screenWidth: screenWidth,
-                          //           screenHeight: screenHeight),
-                          //     );
                         },
                         child: AlertDialog(
                           backgroundColor: Colors.transparent,
@@ -167,7 +158,7 @@ class QuestionPage extends StatelessWidget {
                                                               BlocProvider(
                                                                 create: (context) =>
                                                                     CollectionBloc(
-                                                                        AppDatabase()),
+                                                                        AppDatabase()..getAllFossils()),
                                                                 child:
                                                                     CollectionPage(),
                                                               )));
